@@ -4,6 +4,10 @@ import { reactive } from "vue";
 import CreditCard from "./components/CreditCard.vue";
 import CardBack from "./components/CardBack.vue";
 
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log(e);
+};
 const card = reactive({
   name: "",
   cardNumber: "",
@@ -19,10 +23,10 @@ const card = reactive({
   <main>
     <credit-card :card="card"></credit-card>
     <card-back></card-back>
-    <img src="/public/images/bg-main-desktop.png" alt="Bg" class="bg-img" />
+    <img src="/images/bg-main-desktop.png" alt="Bg" class="bg-img" />
     <div class="spacer"></div>
     <div class="container">
-      <form>
+      <form v-on:submit="handleSubmit">
         <label for="">Cardholder name</label>
         <input
           type="text"
